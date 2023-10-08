@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "copy.h“
+#include "copy.h"
 
 char line[MAXLINE]; // 입력 줄
 char longest[MAXLINE]; // 가장 긴 줄
