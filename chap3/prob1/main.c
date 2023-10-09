@@ -10,7 +10,7 @@ int main(){
   int max;
   max = 0;
 
-  while(gets(line) != NULL) {
+  while(fgets(line) != NULL) {
     len = strlen(line);
 
     if(len > max) {
