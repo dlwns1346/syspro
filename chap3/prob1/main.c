@@ -5,7 +5,7 @@ char line[MAXLINE]; // 입력 줄
 char longest[MAXLINE]; // 가장 긴 줄
 /* 입력 줄 가운데 가장 긴 줄을 프린트한다. */
 
-main(){
+int main(){
   int len;
   int max;
   max = 0;
