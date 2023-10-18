@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #define MAXLINE 80
 
 /* 텍스트 파일에 줄 번호 붙여 프린트한다. */
