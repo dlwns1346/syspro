@@ -10,13 +10,13 @@ int main(int argc, char *argv[])
   char buffer[MAXLINE];
 
   if (argc != 2) {
-    fprintf(stderr,  “How to use : line FileName\n”);
+    fprintf(stderr,  "How to use : line FileName\n");
     exit(1);
   }
 
   if ( (fp = fopen(argv[1],"r")) == NULL)
   {
-    fprintf(stderr, “Error Open File\n”); 
+    fprintf(stderr, "Error Open File\n"); 
     exit(2);
   }
 
