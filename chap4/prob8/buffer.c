@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
     FILE *fp;
     if (!strcmp(argv[1], "stdin")) {
         fp = stdin;
-        printf(“Enter one letter:");
+        printf("Enter one letter:");
         if (getchar() == EOF) perror("getchar");
     }
     else if (!strcmp(argv[1], "stdout"))
@@ -23,14 +23,14 @@ int main(int argc, char *argv[])
     } 
     else if (getc(fp) == EOF) perror("getc");
 
-    printf(“Stream = %s, ", argv[1]);
+    printf("Stream = %s, ", argv[1]);
 
     if (fp->_flags & _IO_UNBUFFERED)
-        printf(“Unbuffered");
+        printf("Unbuffered");
     else if (fp->_flags & _IO_LINE_BUF)
-        printf(“Line buffered");
+        printf("Line buffered");
     else 
-        printf(“Fully buffered");
+        printf("Fully buffered");
 
     printf(", Buffer size = %d\n", fp->_IO_buf_end - fp->_IO_buf_base);
     exit(0);
