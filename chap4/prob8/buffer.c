@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define _IO_UNBUFFERED 0x0002 
-#define _IO_LINE_BUF 0x0200
 
 int main(int argc, char *argv[])
 {
@@ -25,9 +23,9 @@ int main(int argc, char *argv[])
 
     printf("Stream = %s, ", argv[1]);
 
-    if (fp->_flags & _IO_UNBUFFERED)
+    if (fp->_flags & _IONBF)
         printf("Unbuffered");
-    else if (fp->_flags & _IO_LINE_BUF)
+    else if (fp->_flags & _IOLBF)
         printf("Line buffered");
     else 
         printf("Fully buffered");
