@@ -1,79 +1,34 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
+#include "copy.h"
+char line[5][MAXLINE]; // 입력 줄
+char longest[5][MAXLINE]; // 가장 긴 줄
+void copy(char from[], char to[]);
 
-int main() {
-    FILE *file;
-    char savedText[10][100];
-    char buf;
-    int lineCount = 0;
 
-    // Open the text file for reading
-    file = fopen("test.txt", "r");
-    if (file == NULL) {
-        printf("Failed to open the file.\n");
-        return 1;
-    }
+/*입력 줄 가운데 가장 긴 줄 프린트 */
+int main()
+{
+   int len, max = 0;
 
-    // Read and save each line from the text file
-    int row = 0;
-    int col = 0;
-    while (fread(&buf, 1, 1, file) == 1) {
-        if (buf != '\n') {
-            savedText[row][col++] = buf;
-        } else {
-            savedText[row][col] = '\0';
-            row++;
-            col = 0;
-        }
-    }
-    lineCount = row;
-    fclose(file);
+   int i = 0;
 
-    printf("File read success\n");
-    printf("Total Line : %d\n", lineCount);
-    printf("You can choose 1 ~ %d Line\n", lineCount);
+   while (i < 5) {
+      fgets(line[i],MAXLINE,stdin);
+      len = strlen(line[i]);
+      if (len > max) {
+         max = len;
+         copy(line[i], longest[max]);
+      } else {
+         copy(line[i], longest[len]);
+      }
+      i++;
+   }
 
-    char input[100];
-    int selectedLines[10];  // To store selected line numbers
-    int selectedCount = 0;  // To keep track of how many lines are selected
+   while (max > 0) {// 입력 줄이 있었다면
+      printf("%s", longest[max]);
+      max--;
+   }
 
-    // Prompt the user for input
-    printf("Pls 'Enter' the line to select: ");
-    fgets(input, sizeof(input), stdin);
-
-    char *token = strtok(input, ",\n");
-    while (token != NULL) {
-        if (strcmp(token, "*") == 0) {
-            // Select all lines
-            for (int i = 1; i <= lineCount; i++) {
-                selectedLines[selectedCount++] = i;
-            }
-        } else if (strchr(token, '-') != NULL) {
-            // Handle range of lines (e.g., n-m)
-            int start, end;
-            if (sscanf(token, "%d~%d", &start, &end) == 2) {
-                for (int i = start; i <= end && i <= lineCount; i++) {
-                    selectedLines[selectedCount++] = i;
-                }
-            }
-        } else {
-            // Handle single line selection
-            int line = atoi(token);
-            if (line >= 1 && line <= lineCount) {
-                selectedLines[selectedCount++] = line;
-            }
-        }
-        token = strtok(NULL, ",\n");
-    }
-
-    // Print the selected lines
-    for (int i = 0; i < selectedCount; i++) {
-        int line = selectedLines[i];
-        if (line >= 1 && line <= lineCount) {
-            printf("%s\n", savedText[line - 1]);
-        }
-    }
-
-    return 0;
+   return 0;
 }
