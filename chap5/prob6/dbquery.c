@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 	char c; 
    struct student record;
    if (argc < 2) {
-      fprintf(stderr, “How to use : %s file\n", argv[0]);
+      fprintf(stderr, "How to use : %s file\n", argv[0]);
       exit(1);
    }
    if ((fd = open(argv[1], O_RDONLY)) == -1) {
