@@ -43,17 +43,19 @@ int main() {
     fgets(input, sizeof(input), stdin);
 
     char *token = strtok(input, ",\n");
+    int i;
+
     while (token != NULL) {
         if (strcmp(token, "*") == 0) {
             // Select all lines
-            for (int i = 1; i <= lineCount; i++) {
+            for (i = 1; i <= lineCount; i++) {
                 selectedLines[selectedCount++] = i;
             }
         } else if (strchr(token, '-') != NULL) {
             // Handle range of lines (e.g., n-m)
             int start, end;
-            if (sscanf(token, "%d~%d", &start, &end) == 2) {
-                for (int i = start; i <= end && i <= lineCount; i++) {
+            if (sscanf(token, "%d-%d", &start, &end) == 2) {
+                for (i = start; i <= end && i <= lineCount; i++) {
                     selectedLines[selectedCount++] = i;
                 }
             }
@@ -68,7 +70,7 @@ int main() {
     }
 
     // Print the selected lines
-    for (int i = 0; i < selectedCount; i++) {
+    for (i = 0; i < selectedCount; i++) {
         int line = selectedLines[i];
         if (line >= 1 && line <= lineCount) {
             printf("%s\n", savedText[line - 1]);
