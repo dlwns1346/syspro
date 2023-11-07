@@ -1,6 +1,8 @@
  #include <sys/types.h>
  #include <sys/stat.h>
-
+ #include <dirent.h>
+ #include <stdlib.h>
+ #include <stdio.h>
  #include <time.h>
  #include <grp.h>
  #include <pwd.h>
@@ -71,8 +73,9 @@ int main(int argc, char **argv)
  {
      static char perms[10];
      strcpy(perms, "---------");
+     int i;
  
-     for (int i=0; i < 3; i++) {
+     for (i=0; i < 3; i++) {
          if (mode & (S_IRUSR >> i*3))
              perms[i*3] = 'r';
          if (mode & (S_IWUSR >> i*3))
