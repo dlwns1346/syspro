@@ -10,7 +10,7 @@ int main(int argc, char *argv[ ])
         write(1, buffer, nread);
         exit(0);
     } else {
-        fprintf(stderr, “Error : No such link\n");
+        fprintf(stderr, "Error : No such link\n");
         exit(1);
     }
 }
