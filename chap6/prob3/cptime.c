@@ -1,5 +1,9 @@
-#include <sys/types.h> #include <sys/stat.h> #include <sys/time.h>
-#include <utime.h> #include <stdio.h> #include <stdlib.h>
+#include <sys/types.h> 
+#include <sys/stat.h> 
+#include <sys/time.h>
+#include <utime.h> 
+#include <stdio.h> 
+#include <stdlib.h>
 
 int main(int argc, char *argv[]) 
 {
@@ -7,7 +11,7 @@ int main(int argc, char *argv[])
     struct utimbuf time;
 
     if (argc < 3) {
-        fprintf(stderr, “How to use: cptime file1 file2\n");
+        fprintf(stderr, "How to use: cptime file1 file2\n");
         exit(1);
     }
  
