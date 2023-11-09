@@ -13,7 +13,7 @@
     struct flock lock;
 
     if (argc < 2) {
-      fprintf(stderr, “How to use : %s File \n", argv[0]);
+      fprintf(stderr, "How to use : %s File \n", argv[0]);
       exit(1);
     }
     if ((fd = open(argv[1], O_RDONLY)) == -1) {
@@ -34,8 +34,8 @@
 
        lseek(fd, (id-START_ID)*sizeof(record), SEEK_SET);
        if ((read(fd, (char *) &record, sizeof(record)) > 0) && (record.id != 0))
-          printf(“Name:%s\t StuID:%d\t Score:%d\n", record.name, record.id, record.score);
-       else printf(“No record %d \n", id);
+          printf("Name:%s\t StuID:%d\t Score:%d\n", record.name, record.id, record.score);
+       else printf("No record %d \n", id);
        lock.l_type = F_UNLCK;
        fcntl(fd,F_SETLK, &lock); /* 잠금 해제 */
        printf("\nEnter StudentID to search : ");

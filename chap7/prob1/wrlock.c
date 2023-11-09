@@ -13,8 +13,8 @@
     struct flock lock;
 
     if (argc < 2) {
-       fprintf(stderr, “How to use : %s File \n", argv[0]);
-       exit(1);8
+       fprintf(stderr, "How to use : %s File \n", argv[0]);
+       exit(1);
     }
 
    if ((fd = open(argv[1], O_RDWR)) == -1) {
@@ -35,16 +35,16 @@
 
       lseek(fd, (long) (id-START_ID)*sizeof(record), SEEK_SET);
       if ((read(fd, (char *) &record, sizeof(record)) > 0) && (record.id != 0)) {
-         printf(“Name:%s\t StuID:%d\t Score:%d\n",
+         printf("Name:%s\t StuID:%d\t Score:%d\n",
                    record.name, record.id, record.score);
-         printf(“Enter new score: ");
+         printf("Enter new score: ");
          scanf("%d", &record.score);
          lseek(fd, (long) -sizeof(record), SEEK_CUR);
          write(fd, (char *) &record, sizeof(record));
          lock.l_type = F_UNLCK;
          fcntl(fd, F_SETLK, &lock);    /* 잠금 해제 */
       }
-      else printf(“No record %d \n", id); 
+      else printf("No record %d \n", id); 
       printf("\nEnter StudentID you want to modify : ");
     }
     close(fd);
