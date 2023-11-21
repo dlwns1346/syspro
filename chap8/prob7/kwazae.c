@@ -7,16 +7,16 @@
 
 int main(int argc, char *argv[], char *envp[]) {
     int opt;
-    
-    while ((opt = getopt(argc, argv, "e:ugip")) != -1) {
+    int i = 1;
+    while ((opt = getopt(argc, argv, "eugip")) != -1) {
         switch (opt) {
             case 'e':
-		if (optarg[0] != '\0') {
-		    char *env_val = getenv(optarg);
+		if (i + 1 < argc && argv[i + 1][0] != '-') {
+		    char *env_val = getenv(argv[i + 1]);
 		    if (env_val != NULL) {
-                        printf("%s=%s\n", optarg, env_val);
+                        printf("%s=%s\n", argv[i + 1], env_val);
                     } else {
-                        printf("%s is not set.\n", optarg);
+                        printf("%s is not set.\n", argv[i + 1]);
                     }
 		} else {
 		    char **env;
