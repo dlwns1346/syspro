@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdio.h>
+#include <stdlib.h>
 static void exit_handler1(void), exit_handler2(void);
 int main(void) 
 {
