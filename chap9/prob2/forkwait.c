@@ -1,5 +1,9 @@
-#include <sys/types.h> 
-…
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
 /* 부모 프로세스가 자식 프로세스를 생성하고 끝나기를 기다린다. */
 int main() 
 {
