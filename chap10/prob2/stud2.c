@@ -29,3 +29,14 @@ int main()
         p->next = head;		
         head = p;
     }
+
+printf("\n* 학생 정보(역순) *\n");
+    p = head;
+    while (p != NULL)  {
+        count++;
+        printf("학번: %d 이름: %s \n", p->id,  p->name); 
+        p = p->next;
+    }
+    printf("총 %d 명입니다.\n", count); 
+    exit(0);
+}
