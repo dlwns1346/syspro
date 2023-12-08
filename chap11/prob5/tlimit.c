@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
    signal(SIGALRM, alarmHandler);
    sscanf(argv[1], "%d", &limit);
    alarm(limit);
-pid = fork( );
+   pid = fork( );
    if (pid == 0) {
       execvp(argv[2], &argv[2]);
       fprintf(stderr, "%s:실행 불가\n", argv[1]);
