@@ -12,7 +12,8 @@ int main( )
 }
 void intHandler(int signo)
 {
-   printf("인터럽트 시그널 처리\n"); 
-   printf(“시그널 번호: %d\n“, signo);
+   printf("Inturrupt signal\n"); 
+   printf("signal number : %d\n", signo);
    exit(0);
 }
+
