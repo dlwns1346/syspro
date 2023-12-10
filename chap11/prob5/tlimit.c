@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
       fprintf(stderr, "%s:실행 불가\n", argv[1]);
    } else {
       child = wait(&status);
-      printf("[%d] 자식 프로세스 %d 종료 \n", 
+      printf("[%d] child process %d exid \n", 
               getpid(), pid);
    }
 }
