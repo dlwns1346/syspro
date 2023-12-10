@@ -21,20 +21,20 @@ int main()
         exit(1);
     }
 
-  ptr = (struct student *) malloc(n * sizeof(struct student));
-	 if (ptr == NULL) {
-	     perror("malloc"); 
-                  exit(2);
-	 }
-	
-	 printf("%d 명의 학번과 이름을 입력하세요.\n", n);
-	 for (i = 0; i < n; i++)
-                 scanf("%d %s", &ptr[i].id, ptr[i].name);
-	
-	 printf("\n* 학생 정보(역순) *\n");
-	 for (i = n-1; i >= 0; i--)
-	      printf("%d %s\n", ptr[i].id, ptr[i].name);
-	
-	 printf("\n");
-	 exit(0);
-      }
+    ptr = (struct student *) malloc(n * sizeof(struct student));
+    if (ptr == NULL) {
+        perror("malloc"); 
+        exit(2);
+    }
+
+    printf("%d 명의 학번과 이름을 입력하세요.\n", n);
+    for (i = 0; i < n; i++)
+        scanf("%d %s", &ptr[i].id, &ptr[i].name);
+
+    printf("\n* 학생 정보(역순) *\n");
+    for (i = n-1; i >= 0; i--)
+        printf("%d %s\n", ptr[i].id, ptr[i].name);
+
+    printf("\n");
+    exit(0);
+}
