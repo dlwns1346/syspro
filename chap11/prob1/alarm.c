@@ -2,11 +2,13 @@
 /* 알람 시그널을 보여주는 프로그램 */
 int main( )
 {
+   int n=1;
    alarm(5);
-   printf("무한 루프 \n");
+   printf("Loop start \n");
    while (1) {
       sleep(1);
-      printf(“1초 경과 \n");
+      printf("%d second \n", n++);
    }
-   printf("실행되지 않음 \n");
+   printf("Alarm clock \n");
 }
+
