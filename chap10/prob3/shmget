@@ -1,4 +1,0 @@
-#include <sys/shm.h> 
-#include <sys/ipc.h> 
-int shmget(key_t key, size_t size, int shmflg);
-key를 사용하여 size 크기의 공유 메모리를 생성하고 생성된 공유 메모리의 ID를 반환한다. 
